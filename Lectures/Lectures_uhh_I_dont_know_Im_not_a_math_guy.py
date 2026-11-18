@@ -36,6 +36,8 @@ class DynamicGraph:
         self.axes.set_ylim(-1.5, 1.5)
 
         self.data_line, = self.axes.plot([], [], 'b.', label='Data')
+        """This docstring notation is probably much better for larger comments and explanations. If we want to explain
+        a function we usually use docstring above the function definition."""
         #     What does the "," do here? It serves the same functionality as the following:
         #     self.data_line, = self.axes.plot([], [], 'b.', label='Data')
         #     creates a list containing graphical element "plot([], [], 'b.', label='Data')", to be specific:
@@ -49,6 +51,7 @@ class DynamicGraph:
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
     def start_simulation(self):
+        self.start_button.config(state=tk.DISABLED) # I suggest to add it here, so that the user cannot click the button again while the simulation is running.
         self.function_definition()
         self.data_processing()
         self._update_plot() #there must be an integer passed to this function, unless you define a default value for the parameter n, which is what I did here. I set n=1 as the default value.
@@ -69,7 +72,6 @@ class DynamicGraph:
 
 
     def function_definition(self):
-
         self.x = linspace(self.start, self.stop, self.Num_of_Points)
         function = self.get_function()
         match function:
