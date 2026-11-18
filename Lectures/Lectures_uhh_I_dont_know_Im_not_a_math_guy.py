@@ -51,9 +51,9 @@ class DynamicGraph:
     def start_simulation(self):
         self.function_definition()
         self.data_processing()
-        self._update_plot()
+        self._update_plot() #there must be an integer passed to this function, unless you define a default value for the parameter n, which is what I did here. I set n=1 as the default value.
 
-    def _update_plot(self, n: int):
+    def _update_plot(self, n: int = 1):
         self.data_line.set_data(self.x[:n], self.y[:n])
 
         approximation = self.y_approx[n-1]
